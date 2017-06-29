@@ -16,4 +16,10 @@ public class DollarTest {
     public void test_one_dollar_is_not_two_dollar() throws Exception {
         assertNotEquals(new Dollar(1), new Dollar(2));
     }
+
+    @Test
+    public void test_one_dollar_multiply_two() throws Exception {
+        Dollar oneDollar = new Dollar(1);
+        assertEquals(new Dollar(2), oneDollar.multiply(2));
+    }
 }

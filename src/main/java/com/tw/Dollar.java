@@ -14,4 +14,8 @@ public class Dollar {
         }
         return false;
     }
+
+    public Dollar multiply(int multiplier) {
+        return new Dollar(amount * multiplier);
+    }
 }

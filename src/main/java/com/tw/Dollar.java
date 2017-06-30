@@ -9,10 +9,7 @@ public class Dollar {
 
     @Override
     public boolean equals(Object obj) {
-        if (this.amount == ((Dollar) obj).amount) {
-            return true;
-        }
-        return false;
+        return this.amount == ((Dollar) obj).amount;
     }
 
     public Dollar multiply(int multiplier) {

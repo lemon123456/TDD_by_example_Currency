@@ -3,16 +3,25 @@ package com.tw;
 public class Dollar {
     private int amount;
 
-    public Dollar(int amount) {
+    Dollar(int amount) {
         this.amount = amount;
+    }
+
+    Dollar multiply(int multiplier) {
+        return new Dollar(this.amount * multiplier);
     }
 
     @Override
     public boolean equals(Object obj) {
-        return this.amount == ((Dollar) obj).amount;
+        if (obj instanceof Dollar) {
+            Dollar dollar = (Dollar) obj;
+            return this.amount == dollar.amount;
+        }
+        return false;
     }
 
-    public Dollar multiply(int multiplier) {
-        return new Dollar(amount * multiplier);
+    @Override
+    public int hashCode() {
+        return this.amount;
     }
 }

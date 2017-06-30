@@ -22,4 +22,10 @@ public class DollarTest {
         Dollar oneDollar = new Dollar(1);
         assertEquals(new Dollar(2), oneDollar.multiply(2));
     }
+
+    @Test
+    public void test_one_dollar_multiply_three() throws Exception {
+        Dollar oneDollar = new Dollar(1);
+        assertEquals(new Dollar(3), oneDollar.multiply(3));
+    }
 }

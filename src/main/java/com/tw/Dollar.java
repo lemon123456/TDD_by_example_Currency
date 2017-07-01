@@ -11,6 +11,10 @@ public class Dollar {
         return new Dollar(this.amount * multiplier);
     }
 
+    public Dollar plus(Dollar addend) {
+        return new Dollar(this.amount + addend.amount);
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Dollar) {
@@ -25,7 +29,4 @@ public class Dollar {
         return this.amount;
     }
 
-    public Dollar plus(Dollar addend) {
-        return new Dollar(this.amount + addend.amount);
-    }
 }

@@ -20,12 +20,12 @@ public class DollarTest {
     @Test
     public void test_one_dollar_multiply_two() throws Exception {
         Dollar oneDollar = new Dollar(1);
-        assertEquals(new Dollar(2), oneDollar.multiply(2));
+        assertEquals(new Dollar(2), oneDollar.times(2));
     }
 
     @Test
     public void test_one_dollar_multiply_three() throws Exception {
         Dollar oneDollar = new Dollar(1);
-        assertEquals(new Dollar(3), oneDollar.multiply(3));
+        assertEquals(new Dollar(3), oneDollar.times(3));
     }
 }

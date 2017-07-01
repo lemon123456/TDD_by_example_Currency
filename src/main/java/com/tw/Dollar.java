@@ -24,4 +24,8 @@ public class Dollar {
     public int hashCode() {
         return this.amount;
     }
+
+    public Dollar plus(Dollar addend) {
+        return new Dollar(this.amount + addend.amount);
+    }
 }

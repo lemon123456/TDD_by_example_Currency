@@ -1,17 +1,23 @@
 package com.tw;
 
-public class Dollar {
-    private int amount;
+public class Dollar extends Money {
+
+    private String currency;
 
     Dollar(int amount) {
-        this.amount = amount;
+        super(amount);
+        currency = "USD";
+    }
+
+    String getCurrency() {
+        return currency;
     }
 
     Dollar times(int multiplier) {
         return new Dollar(this.amount * multiplier);
     }
 
-    public Dollar plus(Dollar addend) {
+    Dollar plus(Dollar addend) {
         return new Dollar(this.amount + addend.amount);
     }
 
@@ -23,10 +29,4 @@ public class Dollar {
         }
         return false;
     }
-
-    @Override
-    public int hashCode() {
-        return this.amount;
-    }
-
 }

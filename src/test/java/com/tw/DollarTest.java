@@ -2,8 +2,6 @@ package com.tw;
 
 import org.junit.Test;
 
-import java.math.BigDecimal;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -35,6 +33,18 @@ public class DollarTest {
     public void test_one_dollar_plus_one_dollar() throws Exception {
         Dollar oneDollar = new Dollar(1);
         assertEquals(new Dollar(2), oneDollar.plus(oneDollar));
+    }
+
+    @Test
+    public void test_one_dollar_plus_two_dollar_plus_two() throws Exception {
+        assertEquals(new Dollar(6), new Dollar(1).plus(new Dollar(2)).times(2));
 
     }
+
+    @Test
+    public void dollar_unit_is_USD() throws Exception {
+        assertEquals("USD", new Dollar(1).getCurrency());
+
+    }
+
 }

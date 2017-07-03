@@ -2,7 +2,7 @@ package com.tw;
 
 public class Money {
     private String currency;
-    int amount;
+    private int amount;
 
     Money(int amount, String currency) {
         this.amount = amount;
@@ -15,6 +15,10 @@ public class Money {
 
     static Money franc(int amount) {
         return new Money(amount, "CHF");
+    }
+
+    int getAmount() {
+        return amount;
     }
 
     String getCurrency() {

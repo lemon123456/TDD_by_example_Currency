@@ -6,7 +6,7 @@ class Bank {
 
     Money reduce(Money source, String toCurrency) {
         int rate = rate(source.getCurrency(), toCurrency);
-        return new Money(source.amount * rate, toCurrency);
+        return new Money(source.getAmount() * rate, toCurrency);
     }
 
     private int rate(String sourceCurrency, String toCurrency) {

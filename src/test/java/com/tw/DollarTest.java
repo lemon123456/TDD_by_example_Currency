@@ -47,4 +47,21 @@ public class DollarTest {
 
     }
 
+    @Test
+    public void test_reduce_one_dollar_to_dollar() throws Exception {
+        Bank bank = new Bank();
+        assertEquals(Money.dollar(1), bank.reduce(Money.dollar(1), "USD"));
+    }
+
+    @Test
+    public void test_reduce_one_dollar_to_franc() throws Exception {
+        Bank bank = new Bank();
+        assertEquals(Money.franc(2), bank.reduce(Money.dollar(1), "CHF"));
+    }
+
+    @Test
+    public void test_reduce_two_dollar_to_franc() throws Exception {
+        Bank bank = new Bank();
+        assertEquals(Money.franc(4), bank.reduce(Money.dollar(2), "CHF"));
+    }
 }

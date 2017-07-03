@@ -2,9 +2,9 @@ package com.tw;
 
 public class Money {
     private String currency;
-    private int amount;
+    int amount;
 
-    private Money(int amount, String currency) {
+    Money(int amount, String currency) {
         this.amount = amount;
         this.currency = currency;
     }

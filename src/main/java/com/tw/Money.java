@@ -1,11 +1,12 @@
 package com.tw;
 
 public class Money {
-    protected String currency;
+    String currency;
     int amount;
 
-    Money(int amount) {
+    Money(int amount, String currency) {
         this.amount = amount;
+        this.currency = currency;
     }
 
     String getCurrency() {

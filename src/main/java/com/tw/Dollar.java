@@ -3,8 +3,7 @@ package com.tw;
 public class Dollar extends Money {
 
     Dollar(int amount) {
-        super(amount);
-        currency = "USD";
+        super(amount, "USD");
     }
 
     Dollar times(int multiplier) {

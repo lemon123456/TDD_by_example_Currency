@@ -3,8 +3,7 @@ package com.tw;
 public class Franc extends Money {
 
     Franc(int amount) {
-        super(amount);
-        currency = "CHF";
+        super(amount, "CHF");
     }
 
     Franc plus(Franc addend) {

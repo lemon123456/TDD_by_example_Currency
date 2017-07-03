@@ -9,41 +9,41 @@ public class FrancTest {
 
     @Test
     public void test_one_franc_is_one_franc() throws Exception {
-        assertEquals(new Franc(1), new Franc(1));
+        assertEquals(Money.franc(1), Money.franc(1));
     }
 
     @Test
     public void test_one_franc_is_not_two_franc() throws Exception {
-        assertNotEquals(new Franc(1), new Franc(2));
+        assertNotEquals(Money.franc(1), Money.franc(2));
     }
 
     @Test
     public void test_one_franc_multiply_two() throws Exception {
-        Franc oneFranc = new Franc(1);
-        assertEquals(new Franc(2), oneFranc.times(2));
+        Money oneMoney = Money.franc(1);
+        assertEquals(Money.franc(2), oneMoney.times(2));
     }
 
     @Test
     public void test_one_franc_multiply_three() throws Exception {
-        Franc oneFranc = new Franc(1);
-        assertEquals(new Franc(3), oneFranc.times(3));
+        Money oneMoney = Money.franc(1);
+        assertEquals(Money.franc(3), oneMoney.times(3));
     }
 
     @Test
     public void test_one_franc_plus_one_franc() throws Exception {
-        Franc oneFranc = new Franc(1);
-        assertEquals(new Franc(2), oneFranc.plus(oneFranc));
+        Money oneMoney = Money.franc(1);
+        assertEquals(Money.franc(2), oneMoney.plus(oneMoney));
     }
 
     @Test
     public void test_one_franc_plus_two_franc_plus_two() throws Exception {
-        assertEquals(new Franc(6), new Franc(1).plus(new Franc(2)).times(2));
+        assertEquals(Money.franc(6), Money.franc(1).plus(Money.franc(2)).times(2));
 
     }
 
     @Test
     public void test_Franc_unit_is_CHF() throws Exception {
-        assertEquals("CHF", new Franc(1).getCurrency());
+        assertEquals("CHF", Money.franc(1).getCurrency());
 
     }
 

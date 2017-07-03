@@ -2,15 +2,9 @@ package com.tw;
 
 public class Dollar extends Money {
 
-    private String currency;
-
     Dollar(int amount) {
         super(amount);
         currency = "USD";
-    }
-
-    String getCurrency() {
-        return currency;
     }
 
     Dollar times(int multiplier) {

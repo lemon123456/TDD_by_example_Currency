@@ -2,15 +2,9 @@ package com.tw;
 
 public class Franc extends Money {
 
-    private String currency;
-
     Franc(int amount) {
         super(amount);
         currency = "CHF";
-    }
-
-    String getAccount() {
-        return currency;
     }
 
     Franc plus(Franc addend) {

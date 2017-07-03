@@ -1,12 +1,15 @@
 package com.tw;
 
 public class Money {
-    protected int amount;
     protected String currency;
+    int amount;
 
-    public Money(int amount) {
+    Money(int amount) {
         this.amount = amount;
-        currency = "CHF";
+    }
+
+    String getCurrency() {
+        return currency;
     }
 
     @Override

@@ -43,7 +43,7 @@ public class FrancTest {
 
     @Test
     public void test_Franc_unit_is_CHF() throws Exception {
-        assertEquals("CHF", new Franc(1).getAccount());
+        assertEquals("CHF", new Franc(1).getCurrency());
 
     }
 

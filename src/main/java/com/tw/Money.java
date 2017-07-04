@@ -25,12 +25,20 @@ public class Money implements Expression {
         return currency;
     }
 
-    Money times(int multiplier) {
+    @Override
+    public Money times(int multiplier) {
         return new Money(this.amount * multiplier, this.currency);
     }
 
-    Money plus(Money addend) {
-        return new Money(this.amount + addend.amount, this.currency);
+    @Override
+    public Expression plus(Expression expression) {
+        if (expression instanceof Money) {
+            Money addend = (Money) expression;
+            if (this.getCurrency().equals(addend.getCurrency())) {
+                return new Money(this.amount + addend.amount, this.currency);
+            }
+        }
+        return new Sum(this, expression);
     }
 
     @Override

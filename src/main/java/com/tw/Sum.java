@@ -1,24 +1,36 @@
 package com.tw;
 
 public class Sum implements Expression {
-    private final Money augend;
-    private final Money addend;
+    private final Expression augend;
+    private final Expression addend;
 
-    public Sum(Money augend, Money addend) {
+    Sum(Expression augend, Expression addend) {
         this.augend = augend;
         this.addend = addend;
     }
 
-    public Money getAugend() {
+    private Expression getAugend() {
         return augend;
     }
 
-    public Money getAddend() {
+    private Expression getAddend() {
         return addend;
     }
 
     @Override
     public Money reduce(String toCurrency, Bank bank) {
-        return bank.reduce(getAugend(), toCurrency).plus(bank.reduce(getAddend(), toCurrency));
+        Money money = bank.reduce(getAugend(), toCurrency);
+        Money addend = bank.reduce(getAddend(), toCurrency);
+        return (Money) money.plus(addend);
+    }
+
+    @Override
+    public Expression plus(Expression addend) {
+        return new Sum(this, addend);
+    }
+
+    @Override
+    public Expression times(int multiplier) {
+        return new Sum(augend.times(multiplier), addend.times(multiplier));
     }
 }

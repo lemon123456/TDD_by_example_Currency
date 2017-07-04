@@ -1,5 +1,6 @@
 package com.tw;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -71,4 +72,29 @@ public class DollarTest {
         assertEquals(Money.franc(4), bank.reduce(new Sum(Money.dollar(1), Money.franc(2)), "CHF"));
     }
 
+    @Test
+    public void test_one_dollar_plus_two_francs_plus_three_francs() throws Exception {
+        Bank bank = new Bank();
+        assertEquals(Money.franc(7), bank.reduce(new Sum(Money.dollar(1), Money.franc(2)).plus(Money.franc(3)), "CHF"));
+    }
+
+    @Test
+    public void test_sum_plus_sum() throws Exception {
+        Bank bank = new Bank();
+        Sum sum = new Sum(Money.dollar(1), Money.franc(2));
+        assertEquals(Money.franc(8), bank.reduce(sum.plus(sum), "CHF"));
+    }
+
+    @Test
+    public void test_sum_times_three() throws Exception {
+        Bank bank = new Bank();
+        Sum sum = new Sum(Money.dollar(1), Money.franc(2));
+        assertEquals(Money.franc(12), bank.reduce(sum.times(3), "CHF"));
+    }
+
+    @Test
+    public void final_test() throws Exception {
+        Bank bank = new Bank();
+        assertEquals(Money.franc(22), bank.reduce(Money.dollar(1).plus(Money.dollar(2)).times(3).plus(Money.franc(4)),"CHF"));
+    }
 }

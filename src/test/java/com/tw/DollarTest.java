@@ -64,4 +64,11 @@ public class DollarTest {
         Bank bank = new Bank();
         assertEquals(Money.franc(4), bank.reduce(Money.dollar(2), "CHF"));
     }
+
+    @Test
+    public void test_one_dollar_plus_two_franc() throws Exception {
+        Bank bank = new Bank();
+        assertEquals(Money.franc(4), bank.reduce(new Sum(Money.dollar(1), Money.franc(2)), "CHF"));
+    }
+
 }

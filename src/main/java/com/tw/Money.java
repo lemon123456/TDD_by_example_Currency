@@ -1,6 +1,6 @@
 package com.tw;
 
-public class Money {
+public class Money implements Expression {
     private String currency;
     private int amount;
 
@@ -31,6 +31,12 @@ public class Money {
 
     Money plus(Money addend) {
         return new Money(this.amount + addend.amount, this.currency);
+    }
+
+    @Override
+    public Money reduce(String toCurrency, Bank bank) {
+        int rate = bank.rate(getCurrency(), toCurrency);
+        return new Money(getAmount() * rate, toCurrency);
     }
 
     @Override

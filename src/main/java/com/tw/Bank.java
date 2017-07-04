@@ -4,12 +4,11 @@ class Bank {
     Bank() {
     }
 
-    Money reduce(Money source, String toCurrency) {
-        int rate = rate(source.getCurrency(), toCurrency);
-        return new Money(source.getAmount() * rate, toCurrency);
+    Money reduce(Expression source, String toCurrency) {
+        return source.reduce(toCurrency, this);
     }
 
-    private int rate(String sourceCurrency, String toCurrency) {
+    int rate(String sourceCurrency, String toCurrency) {
         int rate = 1;
         if (sourceCurrency.equals("USD") && toCurrency.equals("CHF")) {
             rate = 2;

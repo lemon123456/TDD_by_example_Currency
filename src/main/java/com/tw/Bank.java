@@ -1,18 +1,23 @@
 package com.tw;
 
+import java.util.HashMap;
+
 class Bank {
-    Bank() {
-    }
+
+    private HashMap<Pair, Integer> rates = new HashMap<>();
 
     Money reduce(Expression source, String toCurrency) {
         return source.reduce(toCurrency, this);
     }
 
     int rate(String sourceCurrency, String toCurrency) {
-        int rate = 1;
-        if (sourceCurrency.equals("USD") && toCurrency.equals("CHF")) {
-            rate = 2;
+        if (sourceCurrency.equals(toCurrency)) {
+            return 1;
         }
-        return rate;
+        return rates.get(new Pair(sourceCurrency, toCurrency));
+    }
+
+    void setRate(Pair pair, int rate) {
+        rates.put(pair, rate);
     }
 }

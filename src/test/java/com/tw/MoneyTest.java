@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class BankTest {
+public class MoneyTest {
     @Test
     public void test_rate_for_USD_to_USD() throws Exception {
         assertEquals(1, new Bank().rate(Currency.USD, Currency.USD), 0.01);
@@ -30,4 +30,12 @@ public class BankTest {
         assertEquals(3, bank.rate(Currency.USD, Currency.CHF), 0.01);
         assertEquals(7, bank.rate(Currency.USD, Currency.CNY), 0.01);
     }
+
+    @Test
+    public void test_reduce_CHF_to_USD() throws Exception {
+        Bank bank = new Bank();
+        bank.setRate(new Pair(Currency.CHF, Currency.USD), 0.5);
+        assertEquals(Money.dollar(2), bank.reduce(Money.franc(4), Currency.USD));
+    }
+
 }

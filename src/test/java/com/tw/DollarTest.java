@@ -106,9 +106,11 @@ public class DollarTest {
         assertEquals(Money.franc(22), bank.reduce(Money.dollar(1).plus(Money.dollar(2)).times(3).plus(Money.franc(4)), Currency.CHF));
     }
 
-//    @Test
-//    public void test_rate_CHF_to_USD() throws Exception {
-//        bank.setRate(new Pair(Currency.CHF, Currency.USD), 0.5);
-//        assertEquals(Money.dollar(2), bank.reduce(Money.franc(4), Currency.USD));
-//    }
+    @Test
+    public void test_rate_for_CHF_to_USD() throws Exception {
+        Bank bank = this.bank;
+        bank.setRate(new Pair(Currency.CHF, Currency.USD), 0.5);
+        assertEquals(0.5, bank.rate(Currency.CHF, Currency.USD), 0.01);
+    }
+
 }

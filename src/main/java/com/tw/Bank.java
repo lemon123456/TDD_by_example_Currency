@@ -4,14 +4,14 @@ import java.util.HashMap;
 
 class Bank {
 
-    private HashMap<Pair, Integer> rates = new HashMap<>();
+    private HashMap<Pair, Double> rates = new HashMap<>();
 
     Money reduce(Expression source, Currency toCurrency) {
         return source.reduce(toCurrency, this);
     }
 
 
-    void setRate(Pair pair, int rate) {
+    void setRate(Pair pair, double rate) {
         rates.put(pair, rate);
     }
 

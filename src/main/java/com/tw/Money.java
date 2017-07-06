@@ -40,8 +40,8 @@ public class Money implements Expression {
 
     @Override
     public Money reduce(Currency toCurrency, Bank bank) {
-        int rate = bank.rate(getCurrency(), toCurrency);
-        return new Money(getAmount() * rate, toCurrency);
+        double rate = bank.rate(getCurrency(), toCurrency);
+        return new Money((int) (getAmount() * rate), toCurrency);
     }
 
     @Override

@@ -15,10 +15,10 @@ class Bank {
         rates.put(pair, rate);
     }
 
-    public int rate(Currency sourceCurrency, Currency toCurrency) {
+    double rate(Currency sourceCurrency, Currency toCurrency) {
         if (sourceCurrency.equals(toCurrency)) {
             return 1;
         }
-        return rates.get(new Pair(Currency.valueOf(sourceCurrency.name()), Currency.valueOf(toCurrency.name())));
+        return rates.get(new Pair(sourceCurrency, toCurrency));
     }
 }

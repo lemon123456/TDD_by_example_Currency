@@ -1,63 +1,72 @@
 package com.tw;
 
 public class Money implements Expression {
-    private String currency;
+    private Currency currency;
     private int amount;
 
-    Money(int amount, String currency) {
+
+    Money(int amount, Currency currency1) {
         this.amount = amount;
-        this.currency = currency;
+        setCurrency(currency1);
     }
 
     static Money dollar(int amount) {
-        return new Money(amount, "USD");
+        return new Money(amount, Currency.USD);
     }
 
     static Money franc(int amount) {
-        return new Money(amount, "CHF");
+        return new Money(amount, Currency.CHF);
     }
 
     int getAmount() {
         return amount;
     }
 
-    String getCurrency() {
-        return currency;
-    }
-
     @Override
     public Money times(int multiplier) {
-        return new Money(this.amount * multiplier, this.currency);
+        return new Money(this.amount * multiplier, getCurrency());
     }
 
     @Override
     public Expression plus(Expression expression) {
         if (expression instanceof Money) {
             Money addend = (Money) expression;
-            if (this.getCurrency().equals(addend.getCurrency())) {
-                return new Money(this.amount + addend.amount, this.currency);
+            if (getCurrency().equals(addend.getCurrency())) {
+                return new Money(this.amount + addend.amount, getCurrency());
             }
         }
         return new Sum(this, expression);
     }
 
     @Override
-    public Money reduce(String toCurrency, Bank bank) {
+    public Money reduce(Currency toCurrency, Bank bank) {
         int rate = bank.rate(getCurrency(), toCurrency);
         return new Money(getAmount() * rate, toCurrency);
     }
 
     @Override
-    public int hashCode() {
-        return this.amount;
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+
+        Money money = (Money) object;
+
+        if (amount != money.amount) return false;
+        return currency == money.currency;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Money) {
-            Money money = (Money) obj;
-            return this.amount == money.amount && money.currency.equals(this.currency);
-        }
-        return false;
+    public int hashCode() {
+        int result = currency.hashCode();
+        result = 31 * result + amount;
+        return result;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    private void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 }

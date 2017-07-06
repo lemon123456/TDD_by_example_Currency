@@ -4,9 +4,9 @@ public class Pair {
     private final String from;
     private final String to;
 
-    public Pair(String from, String to) {
-        this.from = from;
-        this.to = to;
+    public Pair(Currency fromCurrency, Currency toCurrency) {
+        this.from =  fromCurrency.name();
+        this.to = toCurrency.name();
     }
 
     public String getFrom() {

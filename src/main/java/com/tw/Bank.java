@@ -6,18 +6,19 @@ class Bank {
 
     private HashMap<Pair, Integer> rates = new HashMap<>();
 
-    Money reduce(Expression source, String toCurrency) {
+    Money reduce(Expression source, Currency toCurrency) {
         return source.reduce(toCurrency, this);
     }
 
-    int rate(String sourceCurrency, String toCurrency) {
-        if (sourceCurrency.equals(toCurrency)) {
-            return 1;
-        }
-        return rates.get(new Pair(sourceCurrency, toCurrency));
-    }
 
     void setRate(Pair pair, int rate) {
         rates.put(pair, rate);
+    }
+
+    public int rate(Currency sourceCurrency, Currency toCurrency) {
+        if (sourceCurrency.equals(toCurrency)) {
+            return 1;
+        }
+        return rates.get(new Pair(Currency.valueOf(sourceCurrency.name()), Currency.valueOf(toCurrency.name())));
     }
 }
